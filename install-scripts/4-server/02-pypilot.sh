@@ -27,7 +27,6 @@ systemctl disable lircd
 
 usermod -a -G lirc user
 usermod -a -G lirc pypilot
-usermod -a -G lirc signalk
 
 install -v -m 0644 $FILE_FOLDER/60-watchdog.rules "/etc/udev/rules.d/60-watchdog.rules"
 

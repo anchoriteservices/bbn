@@ -12,7 +12,7 @@ usermod -a -G spi signalk
 usermod -a -G gpio signalk
 usermod -a -G dialout signalk
 usermod -a -G plugdev signalk
-
+usermod -a -G lirc signalk
 
 ## Create the charts group and add users that have to write to that folder.
 if ! grep -q charts /etc/group; then
