@@ -89,8 +89,8 @@ install -v -m 0644 $FILE_FOLDER/pypilot_web.service "/etc/systemd/system/"
 install -v -m 0644 $FILE_FOLDER/pypilot_hat.service "/etc/systemd/system/"
 
 sed -i 's/_http._tcp.local./_signalk-http._tcp.local./' "$(find /usr/local/lib -name signalk.py)" || true
-sed -i 's/ttyAMA0/serial1/' "$(find /usr/local/lib -name serialprobe.py)" || true
-sed -i "s/'ttyAMA'//" "$(find /usr/local/lib -name serialprobe.py)" || true
+#sed -i 's/ttyAMA0/serial1/' "$(find /usr/local/lib -name serialprobe.py)" || true
+#sed -i "s/'ttyAMA'//" "$(find /usr/local/lib -name serialprobe.py)" || true
 
 cp $FILE_FOLDER/wind.py "$(find /usr/local/lib -name wind.py)" || true
 
@@ -106,8 +106,8 @@ install -v -o user -g user -m 0755 -d /home/user/.pypilot
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/signalk.conf "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/webapp.conf "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/pypilot_client.conf "/home/pypilot/.pypilot/"
-install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/servodevice "/home/pypilot/.pypilot/"
-install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/nmea0device "/home/pypilot/.pypilot/"
+#install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/servodevice "/home/pypilot/.pypilot/"
+#install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/nmea0device "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/hat.conf "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/blacklist_serial_ports "/home/pypilot/.pypilot/"
 install -v -o user -g user -m 0644 $FILE_FOLDER/pypilot_client.conf "/home/user/.pypilot/"
