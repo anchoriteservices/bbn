@@ -110,6 +110,7 @@ install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/pypilot_client.conf "/home
 #install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/nmea0device "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/hat.conf "/home/pypilot/.pypilot/"
 install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/blacklist_serial_ports "/home/pypilot/.pypilot/"
+#install -v -o pypilot -g pypilot -m 0644 $FILE_FOLDER/serial_ports "/home/pypilot/.pypilot/"
 install -v -o user -g user -m 0644 $FILE_FOLDER/pypilot_client.conf "/home/user/.pypilot/"
 
 install -v -m 0644 $FILE_FOLDER/lircd.conf "/etc/lirc/lircd.conf.d/lircd-pypilot.conf"
