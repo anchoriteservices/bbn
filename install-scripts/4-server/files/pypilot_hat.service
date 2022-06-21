@@ -1,14 +1,16 @@
 [Unit]
 Description=pypilot hat
 DefaultDependencies=false
-ConditionPathExists=/proc/device-tree/hat/custom_0
+#ConditionPathExists=/proc/device-tree/hat/custom_0
 
 [Service]
 Type=simple
 ExecStart=pypilot_hat
 User=pypilot
+StandardOutput=journal
+StandardError=journal
 Restart=always
-RestartSec=2
+RestartSec=3
 
 [Install]
 WantedBy=local-fs.target
