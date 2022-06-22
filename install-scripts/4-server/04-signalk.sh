@@ -144,6 +144,7 @@ pushd /home/signalk/.signalk
                  signalk-buddylist-plugin \
                  signalk-navtex-plugin \
                  @meri-imperiumi/signalk-autostate \
+                 @meri-imperiumi/signalk-alternator-engine-on \
                  signalk-saillogger --unsafe-perm --loglevel error"
 popd
 
