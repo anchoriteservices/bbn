@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-apt-get install -y qt5-default qtscript5 libqt5webkit5 libqt5serialport5  \
+apt-get install -y libqt5quickwidgets5 libqt5webkit5 libqt5serialport5 \
  libqt5svg5 libqt5serialport5 libqt5opengl5 qml-module-qtquick-controls libsndfile1
 
 # https://github.com/ArduPilot/apm_planner
