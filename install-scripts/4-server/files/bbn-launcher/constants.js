@@ -33,7 +33,7 @@ module.exports = {
     {name: 'files', title: 'Files', img: 'folder', bg: 'ForestGreen', cmd: 'onlyone', args: ['thunar']},
 
     {name: 'chess', title: 'Chess', img: 'chess', bg: 'Tan', cmd: 'onlyone', args: ['gnome-chess']},
-    {name: 'cards', title: 'Cards', img: 'cards', bg: 'SaddleBrown', cmd: 'onlyone', args: ['openpref']},
+    {name: 'drone', title: 'Drones', img: 'drone', bg: 'SaddleBrown', cmd: 'onlyone', args: ['apmplanner2']},
     {name: 'webcam', title: 'Web Cam', img: 'camera', bg: 'SeaGreen', cmd: 'onlyone', args: ['cheese']},
     {name: 'messenger', title: 'Messenger', img: 'email', bg: 'RoyalBlue', cmd: '/opt/WA-Web-Msg/WA-Web-Msg', args: []},
     {name: 'social', title: 'Social', img: 'facebook', bg: 'DarkSeaGreen', cmd: '/opt/facebook/facebook', args: []},

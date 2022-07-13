@@ -62,6 +62,9 @@
         <Include>
             <Filename>navit.desktop</Filename>
         </Include>
+        <Include>
+            <Filename>apmplanner2.desktop</Filename>
+        </Include>
     </Menu>
     <Menu>
         <Name>Multimedia</Name>
