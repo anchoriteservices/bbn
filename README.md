@@ -1,10 +1,6 @@
 
 ## What is LysMarine BBN Edition
 
-This is the fork of the original LysMarine https://github.com/lysmarine/lysmarine_gen by Frederic Guilbault.
-It is based on the LysMarine OS, but differs from it in a number of included applications, and the UI features.
-Now it is a distinct OS image.
-
 What started as an effort to build a marine linux OS turned out into much more interesting.
 Our focus was to build a marine computer OS to be used on boats for the navigation and on touch screens in a cockpit of a boat.
 By nature marine navigation is very demanding. Much more demanding than a car computer. There was a need for: 
@@ -42,24 +38,6 @@ Another useful resource is our previous project (see: https://bareboat-necessiti
 Although it is based on OpenPlotter it still is useful to understand hardware and software set up of your marine
 raspberry pi.
 
-# Getting Started
-
-See:
-https://bareboat-necessities.github.io/my-bareboat/bareboat-os.html
-
-# System Requirements
-
-* Raspberry Pi 4 or higher (or CM4 module 4Gb with Wi-Fi, or raspberry pi 400)
-* 4 GB memory or higher (2 GB works too but not for many concurrent programs)
-* Touchscreen with resolution 1024x600 or higher (800x480 works too but few of the programs will open too big dialog boxes)
-* Suitable (unless you find something better) waterproof touchscreen display for your cockpit (Model: SL07W, 
-Brand Sihovision, Capacitive Touch Screen 7 inch, (1000 nits), IP65, 1024x600, Cost under $300): https://www.sihovision.com/industrial-touch-monitor/7-inch-industrial-wide-temperaturer-lcd-monitor-with-remote-control-1.html
-* WiFi and LTE/4G router (not a requirement, gl-x750 Spitz OpenWrt router): https://www.gl-inet.com/products/gl-x750/
-* Quark-elec Marine multiplexers seems has a good product line (or you can just use this LysMarine OS image but
-considering all waterproof connectors and hardware customization these commercial multiplexers be nicer choice):
-https://www.quark-elec.com/product-category/marine/multiplexers/ Another (even cheaper) option: http://www.yakbitz.com/
-* More about hardware: https://bareboat-necessities.github.io/my-bareboat/
-
 
 # Download
 
@@ -82,6 +60,27 @@ confidence.
 If Cloudsmith download link does not work for you, check 
 [Getting Started Guide](https://bareboat-necessities.github.io/my-bareboat/bareboat-os.html). It contains 
 an alternative download location.
+
+
+# BBN Marine OS Documentation
+
+Getting Started:
+https://bareboat-necessities.github.io/my-bareboat/bareboat-os.html
+
+
+# System Requirements
+
+* Raspberry Pi 4 or higher (or CM4 module 4Gb with Wi-Fi, or raspberry pi 400)
+* 4 GB memory or higher (2 GB works too but not for many concurrent programs)
+* Touchscreen with resolution 1024x600 or higher (800x480 works too but few of the programs will open too big dialog boxes)
+* Suitable (unless you find something better) waterproof touchscreen display for your cockpit (Model: SL07W, 
+Brand Sihovision, Capacitive Touch Screen 7 inch, (1000 nits), IP65, 1024x600, Cost under $300): https://www.sihovision.com/industrial-touch-monitor/7-inch-industrial-wide-temperaturer-lcd-monitor-with-remote-control-1.html
+* WiFi and LTE/4G router (not a requirement, gl-x750 Spitz OpenWrt router): https://www.gl-inet.com/products/gl-x750/
+* Quark-elec Marine multiplexers seems has a good product line (or you can just use this LysMarine OS image but
+considering all waterproof connectors and hardware customization these commercial multiplexers be nicer choice):
+https://www.quark-elec.com/product-category/marine/multiplexers/ Another (even cheaper) option: http://www.yakbitz.com/
+* More about hardware: https://bareboat-necessities.github.io/my-bareboat/
+
 
 # Passwords
 
@@ -279,6 +278,10 @@ Windlass, Bow Thruster, Lights)
 - [Pat / WinLink](https://github.com/la5nta/pat)
 - [Widevine](https://www.widevine.com/) Digital Content Protection
 
+
+This is the fork of the original LysMarine https://github.com/lysmarine/lysmarine_gen by Frederic Guilbault.
+It is based on the LysMarine OS, but differs from it in a number of included applications, and the UI features.
+Now it is a distinct OS image.
 
 # Steps to create your own LysMarine BBN Edition image
 
