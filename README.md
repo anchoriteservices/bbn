@@ -39,7 +39,7 @@ Although it is based on OpenPlotter it still is useful to understand hardware an
 raspberry pi.
 
 
-# Download
+# Download BBN OS
 
 To get start it's easier to download pre-built image using the links below (or you can build your own 
 following instructions in the next chapter). 
