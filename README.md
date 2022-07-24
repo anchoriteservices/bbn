@@ -1,5 +1,5 @@
 
-## What is LysMarine BBN Edition
+## What is BBN Marine OS
 
 What started as an effort to build a marine linux OS turned out into much more interesting.
 Our focus was to build a marine computer OS to be used on boats for the navigation and on touch screens in a cockpit of a boat.
