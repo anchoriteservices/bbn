@@ -94,6 +94,9 @@ Default user name in login screens is 'user'.
 
 ![Lysmarine BBN Screen4](img/lysmarine-bbn-screen4.png?raw=true "Lysmarine BBN Screen4")
 
+# BBN Marine OS installation video
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/3zMjUs2X3qU/0.jpg)](https://www.youtube.com/v/3zMjUs2X3qU?playlist=3zMjUs2X3qU&autoplay=1&loop= "Pi on a boat")
 
 # Brief list of applications included:
 
