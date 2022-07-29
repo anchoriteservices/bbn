@@ -1,4 +1,7 @@
 ### lysmarine ####################################
+
+# Enable USB on some CM4 boards
+
 [cm4]
 dtoverlay=dwc2,dr_mode=host
 
@@ -15,9 +18,6 @@ enable_uart=1
 dtparam=i2c_arm=on
 dtparam=spi=on
 #dtoverlay=w1-gpio
-
-# Enable USB on some CM4 boards
-#dtoverlay=dwc2,dr_mode=host
 
 ### lysmarine - screen preset ####################
 
