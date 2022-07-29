@@ -15,7 +15,7 @@ else
   git clone https://github.com/bareboat-necessities/SdrGlut
 fi
 cd SdrGlut
-make -f makefileRaspbian
+make -f makefileRaspbian -j4
 
 # to run
 # ./sdrglut.x

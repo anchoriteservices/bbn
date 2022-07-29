@@ -9,7 +9,7 @@ wget https://www.python.org/ftp/python/$version/Python-$version.tgz
 tar zxf Python-$version.tgz
 cd Python-$version
 ./configure --enable-optimizations
-make -j4
+make -j8
 make altinstall
 apt -y autoremove
 cd ../..
