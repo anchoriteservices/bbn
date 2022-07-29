@@ -39,7 +39,7 @@ mountImageFile() {
   fi
 
   # Mount the image and make the binds required to chroot.
-  modprobe loop
+  /usr/sbin/modprobe loop
   losetup -f
   partitions=$(kpartx -sav $imageFile | cut -d' ' -f3)
   partQty=$(echo $partitions | wc -w)
