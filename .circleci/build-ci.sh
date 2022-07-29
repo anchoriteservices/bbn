@@ -7,8 +7,6 @@
 # bailout on errors and echo commands.
 set -xe
 
-/sbin/modeprobe loop
-
 LYSMARINE_VER=$(date +%Y-%m-%d)
 DOCKER_SOCK="unix:///var/run/docker.sock"
 
