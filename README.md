@@ -72,7 +72,7 @@ https://bareboat-necessities.github.io/my-bareboat/bareboat-os.html
 * Suitable (unless you find something better) waterproof touchscreen display for your cockpit (Model: SL07W, 
 Brand Sihovision, Capacitive Touch Screen 7 inch, (1000 nits), IP65, 1024x600, Cost under $300): https://www.sihovision.com/industrial-touch-monitor/7-inch-industrial-wide-temperaturer-lcd-monitor-with-remote-control-1.html
 * WiFi and LTE/4G router (not a requirement, gl-x750 Spitz OpenWrt router): https://www.gl-inet.com/products/gl-x750/
-* Quark-elec Marine multiplexers seems has a good product line (or you can just use this LysMarine OS image but
+* Quark-elec Marine multiplexers seems has a good product line (or you can just use this BBN OS image but
 considering all waterproof connectors and hardware customization these commercial multiplexers be nicer choice):
 https://www.quark-elec.com/product-category/marine/multiplexers/ Another (even cheaper) option: http://www.yakbitz.com/
 * More about hardware: https://bareboat-necessities.github.io/my-bareboat/
@@ -86,13 +86,13 @@ Default user name in login screens is 'user'.
 
 # Screenshots
 
-![Lysmarine BBN Screen1](img/lysmarine-bbn-screen1.png?raw=true "Lysmarine BBN Screen1")
+![Lysmarine BBN Screen1](img/lysmarine-bbn-screen1.png?raw=true "BBN Marine OS Screen1")
 
-![Lysmarine BBN Screen2](img/lysmarine-bbn-screen2.png?raw=true "Lysmarine BBN Screen2")
+![Lysmarine BBN Screen2](img/lysmarine-bbn-screen2.png?raw=true "BBN Marine OS Screen2")
 
-![Lysmarine BBN Screen3](img/lysmarine-bbn-screen3.png?raw=true "Lysmarine BBN Screen3")
+![Lysmarine BBN Screen3](img/lysmarine-bbn-screen3.png?raw=true "BBN Marine OS Screen3")
 
-![Lysmarine BBN Screen4](img/lysmarine-bbn-screen4.png?raw=true "Lysmarine BBN Screen4")
+![Lysmarine BBN Screen4](img/lysmarine-bbn-screen4.png?raw=true "BBN Marine OS Screen4")
 
 # BBN Marine OS installation video
 
@@ -287,7 +287,7 @@ Although it is based on OpenPlotter it still is useful to understand hardware an
 raspberry pi.
 
 
-# Steps to create your own LysMarine BBN Edition image
+# Steps to create your own BBN Marine OS image
 
 * Create GitHub account
 * Fork this project on GitHub
@@ -303,7 +303,7 @@ raspberry pi.
 
 # License
 
-Lysmarine scripts distributed under GPLv3
+Lysmarine and BBN Marine OS scripts distributed under GPLv3
 
 Copyright © 2020 Frederic Guilbault
 
