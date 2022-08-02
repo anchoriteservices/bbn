@@ -6,9 +6,9 @@ DEV_FILE=/proc/device-tree/hat/custom_0
 PYPILOT=0
 
 if [ -f "$DEV_FILE" ]; then
-  if grep -q "mpu" "$DEV_FILE"; then PYPILOT=1; fi
-  if grep -q "lcd" "$DEV_FILE"; then PYPILOT=1; fi
-  if grep -q "lirc" "$DEV_FILE"; then
+  if grep -q "'mpu'" "$DEV_FILE"; then PYPILOT=1; fi
+  if grep -q "'lcd'" "$DEV_FILE"; then PYPILOT=1; fi
+  if grep -q "'lirc'" "$DEV_FILE"; then
     PYPILOT=1
     # enable lirc, config gpio
     if ! grep -q "^dtoverlay=gpio-ir,gpio_pin=4" /boot/config.txt; then
@@ -18,6 +18,7 @@ if [ -f "$DEV_FILE" ]; then
         echo 'dtoverlay=gpio-ir,gpio_pin=4' >> /boot/config.txt
       fi
     fi
+    systemctl enable lircd
   fi
   if [ "$PYPILOT" = "1" ]; then
     # enable pypilot serial port scan
