@@ -87,6 +87,7 @@ install -v -m 0644 $FILE_FOLDER/pypilot@.service "/etc/systemd/system/"
 install -v -m 0644 $FILE_FOLDER/pypilot_boatimu.service "/etc/systemd/system/"
 install -v -m 0644 $FILE_FOLDER/pypilot_web.service "/etc/systemd/system/"
 install -v -m 0644 $FILE_FOLDER/pypilot_hat.service "/etc/systemd/system/"
+install -v -m 0644 $FILE_FOLDER/pypilot_detect.service "/etc/systemd/system/"
 
 sed -i 's/_http._tcp.local./_signalk-http._tcp.local./' "$(find /usr/local/lib -name signalk.py)" || true
 #sed -i 's/ttyAMA0/serial1/' "$(find /usr/local/lib -name serialprobe.py)" || true
@@ -95,9 +96,10 @@ sed -i 's/_http._tcp.local./_signalk-http._tcp.local./' "$(find /usr/local/lib -
 cp $FILE_FOLDER/wind.py "$(find /usr/local/lib -name wind.py)" || true
 
 systemctl disable pypilot_boatimu.service
-systemctl enable pypilot_hat.service
+systemctl disable pypilot_hat.service
 systemctl enable pypilot@pypilot.service                               # listens on tcp 20220 and 23322
 systemctl enable pypilot_web.service                                   # listens on tcp 8080
+systemctl enable pypilot_detect.service                                # tries to detect pypilot hardware (hat)
 
 ## Install the user config files
 install -v -o pypilot -g pypilot -m 0755 -d /home/pypilot/.pypilot
@@ -121,6 +123,7 @@ install -v $FILE_FOLDER/pypilot_calibration.desktop "/usr/local/share/applicatio
 install -v $FILE_FOLDER/pypilot_control.desktop "/usr/local/share/applications/"
 
 install -m 755 $FILE_FOLDER/pypilot-restart "/usr/local/sbin/pypilot-restart"
+install -m 755 $FILE_FOLDER/pypilot_detect "/usr/local/sbin/pypilot_detect"
 
 ## Give permission to sudo chrt without a password for the user pypilot.
 {
