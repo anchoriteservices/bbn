@@ -1,4 +1,4 @@
-#! /bin/bash -xe
+#!/bin/bash -xe
 
 echo "Install script for BBN OS :)"
 
