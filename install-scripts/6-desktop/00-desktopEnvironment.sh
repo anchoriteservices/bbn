@@ -21,7 +21,8 @@ apt-get -q -y install xserver-xorg-input-libinput xinput libinput-tools xinput-c
  gstreamer1.0-libav alsa-utils libavahi-compat-libdnssd-dev git openbox \
  xbacklight lxappearance gmrun xsettingsd xserver-xorg \
  xinit libgtk2-perl cpanminus perl-base \
- dialog lxterminal network-manager-gnome system-config-printer
+ dialog lxterminal network-manager-gnome system-config-printer \
+ lxterminal gpsbabel file-roller lxtask thunar
 
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/b/bu/budgie-core_10.5-2/budgie-core_10.5-2_${arch}.deb
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/l/li/libbudgie-plugin0_10.5-2/libbudgie-plugin0_10.5-2_${arch}.deb
@@ -77,10 +78,6 @@ fi
 
 # Adobe Flash Player. Copyright 1996-2015. Adobe Systems Incorporated. All Rights Reserved.
 DEBIAN_FRONTEND=noniterractive apt-get -o Dpkg::Options:=="--force-confnew" -q -y install rpi-chromium-mods
-
-apt-get install -y -q lxterminal gpsbabel file-roller lxtask thunar
-
-#apt-get install -y -q pcmanfm mousepad
 
 # force polkit agent to start with openbox (this is needed for nm-applet hotspot)
 sed -i '/^OnlyShowIn=/ s/$/GNOME;/' /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
