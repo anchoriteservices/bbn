@@ -7,7 +7,7 @@ cd wxFormBuilder
 git checkout 2d20e717ac918a5f8f4728146c29a3d83a6a3afd  # Nov 1, 2021
 git submodule update --recursive
 
-meson _build --prefix $PWD/_install --buildtype=release --num-processes 8
+meson _build --prefix $PWD/_install --buildtype=release
 ninja -C _build install
 
 cd _install
