@@ -22,7 +22,7 @@ apt-get -q -y install xserver-xorg-input-libinput xinput libinput-tools xinput-c
  xbacklight lxappearance gmrun xsettingsd xserver-xorg \
  xinit libgtk2-perl cpanminus perl-base \
  dialog lxterminal network-manager-gnome system-config-printer \
- lxterminal gpsbabel file-roller lxtask thunar
+ lxterminal gpsbabel file-roller lxtask thunar git adapta-gtk-theme
 
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/b/bu/budgie-core_10.5-2/budgie-core_10.5-2_${arch}.deb
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/l/li/libbudgie-plugin0_10.5-2/libbudgie-plugin0_10.5-2_${arch}.deb
