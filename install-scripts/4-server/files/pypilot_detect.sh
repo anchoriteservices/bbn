@@ -38,6 +38,8 @@ if [ -f "$DEV_FILE" ]; then
         echo 'dtoverlay=disable-bt' >> /boot/config.txt
       fi
     fi
+    # enable pypilot hat service
+    systemctl enable pypilot_hat
   fi
 fi
 
