@@ -18,21 +18,22 @@ try:
         d = json.loads(f.read())
     if 'lcd' in d:
         # enable hat service
-        if os.system('systemctl is-enabled pypilot_hat'):
-            os.system('systemctl enable pypilot_hat')
-            os.system('systemctl start pypilot_hat')
+        os.system('systemctl enable pypilot_hat')
+        os.system('sed -i "s_/dev/ttyAMA0__" /home/pypilot/.pypilot/blacklist_serial_ports')
 
     if 'lirc' in d:
         # enable lirc service, and config gpio
         update_boot_conf('dtoverlay=gpio-ir,gpio_pin=4')
+        os.system('systemctl enable pypilot_hat')
+        os.system('sed -i "s_/dev/ttyAMA0__" /home/pypilot/.pypilot/blacklist_serial_ports')
 
     if 'mpu' in d:
         # enable pypilot serial port and disable bluetooth
         update_boot_conf('enable_uart=1')
         update_boot_conf('dtoverlay=disable-bt')
+        os.system('sed -i "s_/dev/ttyAMA0__" /home/pypilot/.pypilot/blacklist_serial_ports')
 
 except Exception as e:
     print('failed to read/parse pypilot eeprom', e)
     exit(1)
 
-# reboot if we made a change??
