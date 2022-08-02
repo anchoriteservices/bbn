@@ -10,8 +10,7 @@ if not os.path.exists(p):
 def update_boot_conf(line):
     p = '/boot/config.txt'
     if os.system("grep '" + line + "' " + p):
-        os.system("echo >>" + p)
-        os.system("echo '" + line + "'")
+        os.system("echo '" + line + "' >> " + p)
 
 try:
     with open(p) as f:
