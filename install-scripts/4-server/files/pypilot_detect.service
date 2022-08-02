@@ -4,7 +4,8 @@ DefaultDependencies=false
 ConditionPathExists=/proc/device-tree/hat/custom_0
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=pypilot_detect
 
 [Install]
