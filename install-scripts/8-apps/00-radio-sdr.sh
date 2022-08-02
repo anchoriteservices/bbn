@@ -174,8 +174,12 @@ wget https://bitbucket.org/scytalec/scytalec/downloads/x64-FramePlayer-1002Beta.
 wget https://bitbucket.org/scytalec/scytalec/downloads/x64-SDRSharp.ScytaleC-10213.zip
 wget https://bitbucket.org/scytalec/scytalec/downloads/ScytaleC.1408.zip
 wget https://bitbucket.org/scytalec/scytalec/downloads/x64-DebugHelpers.zip
-wget https://bitbucket.org/scytalec/scytalec.decoder/downloads/x64_Scytalec.Decoder.UI_1.0.0.1.zip
-wget https://bitbucket.org/scytalec/scytalec.decoder/downloads/x64_Scytalec.Decoder.Cmd_1.0.zip
+
+#historical copy of
+#wget https://bitbucket.org/scytalec/scytalec.decoder/downloads/x64_Scytalec.Decoder.UI_1.0.0.1.zip
+#wget https://bitbucket.org/scytalec/scytalec.decoder/downloads/x64_Scytalec.Decoder.Cmd_1.0.zip
+wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/v2022-06-23/x64_Scytalec.Decoder.UI_1.0.0.1.zip
+wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/v2022-06-23/x64_Scytalec.Decoder.Cmd_1.0.zip
 
 #dos2unix content-info.txt
 
