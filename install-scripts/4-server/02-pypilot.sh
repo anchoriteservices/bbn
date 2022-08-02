@@ -123,7 +123,7 @@ install -v $FILE_FOLDER/pypilot_calibration.desktop "/usr/local/share/applicatio
 install -v $FILE_FOLDER/pypilot_control.desktop "/usr/local/share/applications/"
 
 install -m 755 $FILE_FOLDER/pypilot-restart "/usr/local/sbin/pypilot-restart"
-install -m 755 $FILE_FOLDER/pypilot_detect "/usr/local/sbin/pypilot_detect"
+install -m 755 $FILE_FOLDER/pypilot_detect.sh "/usr/local/sbin/pypilot_detect"
 
 ## Give permission to sudo chrt without a password for the user pypilot.
 {
