@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-apt-get -y -q install empathy
+apt-get -y -q install empathy libappindicator3-1 libindicator3-7
 
 apt-get clean
 
@@ -15,8 +15,6 @@ elif [ $LMARCH == 'amd64' ]; then
 else
   arch=$LMARCH
 fi
-
-apt-get -y install libappindicator3-1 libindicator3-7
 
 wget https://github.com/mquevill/caprine/releases/download/v2.54.1-ARM/caprine_2.54.1_${arch}.deb
 
