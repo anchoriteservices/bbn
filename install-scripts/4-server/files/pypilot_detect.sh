@@ -1,5 +1,7 @@
 #!/bin/bash -xe
 
+# configure system for pypilot if pypilot hat is detected
+
 DEV_FILE=/proc/device-tree/hat/custom_0
 PYPILOT=0
 
