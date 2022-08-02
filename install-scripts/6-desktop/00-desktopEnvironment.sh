@@ -22,7 +22,10 @@ apt-get -q -y install xserver-xorg-input-libinput xinput libinput-tools xinput-c
  xbacklight lxappearance gmrun xsettingsd xserver-xorg \
  xinit libgtk2-perl cpanminus perl-base \
  dialog lxterminal network-manager-gnome system-config-printer \
- lxterminal gpsbabel file-roller lxtask thunar git adapta-gtk-theme
+ lxterminal gpsbabel file-roller lxtask thunar git adapta-gtk-theme \
+ libqt5quickwidgets5 libqt5widgets5 libqt5gui5 libqt5webkit5 \
+ libqt5sql5 libqt5printsupport5 libqt5network5 libqt5serialport5 \
+ libqt5svg5 libqt5opengl5 libqt5test5 libqt5xml5 libqt5qml5 qml-module-qtquick-controls libsndfile1
 
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/b/bu/budgie-core_10.5-2/budgie-core_10.5-2_${arch}.deb
 wget https://dl.cloudsmith.io/public/bbn-projects/bbn-budgie/deb/debian/pool/buster/main/l/li/libbudgie-plugin0_10.5-2/libbudgie-plugin0_10.5-2_${arch}.deb
