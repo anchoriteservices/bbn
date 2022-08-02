@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 systemctl is-enabled kplex && systemctl restart kplex
 

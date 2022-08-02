@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 {
   chmod a+r /dev/ttyLYS_gps_"$1"
   if [[ $2 == "remove" ]] ; then
