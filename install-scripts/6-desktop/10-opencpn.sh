@@ -36,7 +36,26 @@ if [ $LMARCH == 'armhf' ]; then
     opencpn-plugin-draw
 fi
 
+# Polar Diagrams
+
+BK_DIR="$(pwd)"
+
+mkdir /home/user/Polars && cd /home/user/Polars
+
+wget https://www.seapilot.com/wp-content/uploads/2018/05/All_polar_files.zip
+unzip All_polar_files.zip
+chown user:user ./*
+chmod 664 ./*
+rm All_polar_files.zip
+
+cd "$BK_DIR"
+
+
 # Install plugin bundle
+if [ $LMARCH == 'arm64' ]; then
+  exit 0
+fi
+
 mkdir tmp-o-bundle-$LMARCH || exit 2
 cd tmp-o-bundle-$LMARCH
 
@@ -58,16 +77,3 @@ if [ -f /usr/lib/opencpn/liblogbookkonni_pi.so ]; then
   rm -f /usr/lib/opencpn/libLogbookKonni_pi.so
 fi
 
-# Polar Diagrams
-
-BK_DIR="$(pwd)"
-
-mkdir /home/user/Polars && cd /home/user/Polars
-
-wget https://www.seapilot.com/wp-content/uploads/2018/05/All_polar_files.zip
-unzip All_polar_files.zip
-chown user:user ./*
-chmod 664 ./*
-rm All_polar_files.zip
-
-cd "$BK_DIR"
