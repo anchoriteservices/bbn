@@ -155,6 +155,7 @@ Default user name in login screens is 'user'.
 - [MotionEye](https://github.com/ccrisan/motioneye) (Cameras Control)
 - [shairport-sync](https://github.com/mikebrady/shairport-sync) (AirPlay)
 - [raspotify](https://github.com/dtcooper/raspotify) (Raspotify)
+- [Jellyfin](https://jellyfin.org/) (Jellyfin)
 
 
 ## Radio
@@ -181,6 +182,7 @@ Default user name in login screens is 'user'.
 - [APRX](https://github.com/PhirePhly/aprx)
 - [dump1090-fa](https://github.com/adsbxchange/dump1090-fa)
 - [PiAware](https://flightaware.com/adsb/piaware/)
+- [APM Planner 2](https://ardupilot.org/planner2/)
 - RTL AIS
 - RTL-SDR
 - GNSS-SDR
@@ -276,6 +278,7 @@ Windlass, Bow Thruster, Lights)
 - [Scytale-C](https://bitbucket.org/scytalec/scytalec/) Inmarsat Decoders
 - [Pat / WinLink](https://github.com/la5nta/pat)
 - [Widevine](https://www.widevine.com/) Digital Content Protection
+- [Homeassistant](https://www.home-assistant.io/) Home Automation
 
 
 This is the fork of the original LysMarine https://github.com/lysmarine/lysmarine_gen by Frederic Guilbault.
