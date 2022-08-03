@@ -220,6 +220,7 @@ Windlass, Bow Thruster, Lights)
 - SMS (Using Gammu)
 - Bluetooth (File Transfer)
 - AirPlay (via shairport-sync)
+- [SolarThing](https://github.com/wildmountainfarms/solarthing) Solar power monitoring
 
 
 ## Tools
@@ -279,6 +280,7 @@ Windlass, Bow Thruster, Lights)
 - [Pat / WinLink](https://github.com/la5nta/pat)
 - [Widevine](https://www.widevine.com/) Digital Content Protection
 - [Homeassistant](https://www.home-assistant.io/) Home Automation
+- [EspHome](https://esphome.io/) Home Automation
 
 
 This is the fork of the original LysMarine https://github.com/lysmarine/lysmarine_gen by Frederic Guilbault.
