@@ -14,7 +14,7 @@ cd _install
 
 mv bin/* /usr/local/bin/
 mv share/* /usr/local/share/
-mv lib/arm*-linux-*/* /usr/local/lib/
+mv lib/a*-linux-*/* /usr/local/lib/
 
 cd ..
 
