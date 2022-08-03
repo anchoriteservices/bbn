@@ -7,9 +7,14 @@ set -x
 EXT=$1
 REPO=$2
 DISTRO=$3
+SKIP_PUBLISHING=1
 
 pwd
 ls
+
+if [ "$SKIP_PUBLISHING" = "1" ]; then
+  exit 0
+fi
 
 for pkg_file in cross-build-release/release/*/*.$EXT; do
   zipName=$(basename $pkg_file)
