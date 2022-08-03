@@ -20,13 +20,13 @@ By nature marine navigation is very demanding. Much more demanding than a car co
 
 We would think our distribution can serve as a basis for others interested to build either:
 
-* Car specialized Linux distribution
-* Weather station under Linux
 * Home automation Linux distribution
+* HAM radio SDR Linux distribution
+* Weather station under Linux
 * Astronomy related Linux distribution
 * Music/Media player Linux distribution
-* HAM radio SDR Linux distribution
 * Generic Linux touch tablet on ARM raspberry OS
+* Car specialized Linux distribution
 * WiFi router
 
 The code for building this distribution is easily customizable following instructions below.
