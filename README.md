@@ -308,7 +308,7 @@ raspberry pi.
 
 # License
 
-Lysmarine and BBN Marine OS scripts distributed under GPLv3
+BBN Marine OS and Lysmarine scripts distributed under GPLv3
 
 Copyright © 2020 Frederic Guilbault
 
