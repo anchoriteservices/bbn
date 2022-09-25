@@ -33,6 +33,7 @@
 } | xargs -I CMD -P 6 bash -c CMD
 
   cat $prefix.part? > $myCache/$zipName
+  md5sum $myCache/$zipName
   rm $prefix.part?
 
   7z e -aoa -o$myCache/ $myCache/$zipName
