@@ -53,7 +53,7 @@ done
 mv /etc/apt/sources.list.d/bbn-rce.list-orig /etc/apt/sources.list.d/bbn-rce.list
 mv /etc/apt/sources.list.d/bbn-kplex.list-orig /etc/apt/sources.list.d/bbn-kplex.list
 
-rm /etc/apt/sources.list.d/*.list-orig
+rm -f /etc/apt/sources.list.d/*.list-orig
 
 install -v -m 0644 $FILE_FOLDER/rsyslog "/etc/logrotate.d/rsyslog"
 
