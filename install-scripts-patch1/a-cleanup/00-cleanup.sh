@@ -55,8 +55,6 @@ mv /etc/apt/sources.list.d/bbn-kplex.list-orig /etc/apt/sources.list.d/bbn-kplex
 
 rm -f /etc/apt/sources.list.d/*.list-orig
 
-install -v -m 0644 $FILE_FOLDER/rsyslog "/etc/logrotate.d/rsyslog"
-
 # clean up more
 rm -rf /usr/share/doc/noaa-apt/docs/examples/argentina.wav*
 rm -rf /usr/share/doc/nodejs/api/
