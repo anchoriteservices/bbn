@@ -35,7 +35,7 @@
   cat $prefix.part? > $myCache/$zipName
   rm $prefix.part?
 
-  7z e -o$myCache/ $myCache/$zipName
+  7z e -aoa -o$myCache/ $myCache/$zipName
   rm $myCache/$zipName
 
   # Copy image file to work folder add temporary space to it.
