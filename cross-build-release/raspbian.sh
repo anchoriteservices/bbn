@@ -32,6 +32,7 @@
   echo curl --progress-bar -k -L -o $prefix.part6 $imageSource.part6
 } | xargs -I CMD -P 6 bash -c CMD
 
+  ls -l $prefix.part?
   cat $prefix.part? > $myCache/$zipName
   md5sum $myCache/$zipName
   rm $prefix.part?
