@@ -18,3 +18,9 @@
 /dev/ttyUSB5
 /dev/ttyUSB6
 /dev/ttyUSB7
+/dev/ttyLYS_gps_0
+/dev/ttyLYS_gps_1
+/dev/ttyLYS_gps_2
+/dev/ttyLYS_ais_0
+/dev/ttyLYS_ais_1
+/dev/ttyLYS_ais_2
