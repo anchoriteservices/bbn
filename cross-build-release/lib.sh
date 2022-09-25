@@ -39,6 +39,7 @@ mountImageFile() {
   fi
 
   # Mount the image and make the binds required to chroot.
+  losetup -f
   partitions=$(kpartx -sav $imageFile | cut -d' ' -f3)
   partQty=$(echo $partitions | wc -w)
   echo $partQty partitions detected.
@@ -92,8 +93,8 @@ inflateImage() {
     log "Inflating OS image to have enough space to build lysmarine."
     cp -fv ${imageLocation} $imageLocationInflated
 
-    log "truncate image to 10500M"
-    truncate -s "10500M" $imageLocationInflated
+    log "truncate image to 12G"
+    truncate -s "12G" $imageLocationInflated
 
     log "resize last partition to 100%"
     partQty=$(fdisk -l $imageLocationInflated | grep -o "^$imageLocationInflated" | wc -l)
@@ -101,12 +102,7 @@ inflateImage() {
     fdisk -l $imageLocationInflated
 
     log "Resize the filesystem to fit the partition."
-    partitions=$(kpartx -sav $imageLocationInflated | cut -d' ' -f3)
-    log $partitions
-    loopId=$(echo $partitions | grep -oh '[0-9]*' | head -n 1)
-    if [ -z "${loopId}" ]; then
-      loopId=0
-    fi
+    loopId=$(kpartx -sav $imageLocationInflated | cut -d" " -f3 | grep -oh '[0-9]*' | head -n 1)
     sleep 5
     ls -l /dev/mapper/
 

@@ -6,9 +6,9 @@
   LYSMARINE_VER=$2
 
   thisArch="raspios"
-  cpuArch="armhf"
-  if [ "arm64" == "$MY_CPU_ARCH" ]; then
-    cpuArch="arm64"
+  cpuArch="arm64"
+  if [ "armhf" == "$MY_CPU_ARCH" ]; then
+    cpuArch="armhf"
   fi
 
   checkRoot
@@ -16,8 +16,8 @@
   # Create caching folder hierarchy to work with this architecture.
   setupWorkSpace $thisArch
 
-  zipName="lysmarine-bbn_2021-11-15-raspios-${cpuArch}.img.xz"
-  imageSource="https://github.com/bareboat-necessities/lysmarine_gen/releases/download/v2021-11-15/${zipName}"
+  zipName="lysmarine-bbn-bullseye_2022-09-20-raspios-${cpuArch}.img.xz"
+  imageSource="https://github.com/bareboat-necessities/lysmarine_gen/releases/download/v2022-09-20/${zipName}"
 
 # Download the official image
   log "Downloading official image from internet."
@@ -85,7 +85,7 @@ EOF
   ls -l ./work/$thisArch/$imageName
 
   # Renaming the OS and moving it to the release folder.
-  cp -v ./work/$thisArch/$imageName ./release/$thisArch/lysmarine-bbn_${LYSMARINE_VER}-${thisArch}-${cpuArch}.img
+  cp -v ./work/$thisArch/$imageName ./release/$thisArch/lysmarine-bbn-bullseye_${LYSMARINE_VER}-${thisArch}-${cpuArch}.img
 
   exit 0
 }
