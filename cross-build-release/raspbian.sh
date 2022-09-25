@@ -24,7 +24,7 @@
   myCache=./cache/$thisArch
   prefix=$myCache/$zipName
 {
-  echo curl --progress-bar -k -L -o $prefix.part1 $imageSource.part0
+  echo curl --progress-bar -k -L -o $prefix.part0 $imageSource.part0
   echo curl --progress-bar -k -L -o $prefix.part1 $imageSource.part1
   echo curl --progress-bar -k -L -o $prefix.part2 $imageSource.part2
   echo curl --progress-bar -k -L -o $prefix.part3 $imageSource.part3
