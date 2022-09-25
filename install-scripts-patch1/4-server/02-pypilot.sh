@@ -29,6 +29,7 @@ install -v -o pypilot -g pypilot -m 0775 -d "/home/tc"
 ln -s /home/pypilot/.pypilot "/home/user/.pypilot"
 ln -s /home/pypilot/.pypilot "/home/tc/.pypilot"
 setfacl -d -m g:pypilot:rw "/home/pypilot"
+setfacl -d -m g:pypilot:rw "/home/pypilot/.pypilot"
 setfacl -d -m g:pypilot:rw "/home/tc"
 
 install -v -o pypilot -g pypilot -m 0664 $FILE_FOLDER/signalk.conf "/home/pypilot/.pypilot/"
