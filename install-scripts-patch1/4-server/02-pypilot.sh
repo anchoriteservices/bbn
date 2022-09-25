@@ -51,7 +51,7 @@ install -v -g pypilot -m 0664 $FILE_FOLDER/lircd.conf "/etc/lirc/lircd.conf.d/li
 sed -i 's/8000/8080/' /etc/systemd/system/pypilot_web.service || true
 
 # TODO: temp patch
-install -m 644 $FILE_FOLDER/wind.py /usr/local/lib/python3.9/dist-packages/pypilot/pilots/wind.py
+install -m 644 $FILE_FOLDER/wind.py "$(find /usr/local/lib -name wind.py)"
 
 # TODO: not needed after changing pypilot service working directory
 echo > /RTIMULib.ini
