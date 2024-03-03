@@ -77,7 +77,7 @@ EOF
   if [ "$BBN_KIND" == "LITE" ] ; then
     BBN_IMG=lysmarine-bbn-lite-bookworm_${thisArch}-${cpuArch}.img
   else
-    BBN_IMG=lysmarine-bbn-full-bookworm_"${thisArch}-${cpuArch}.img
+    BBN_IMG=lysmarine-bbn-full-bookworm_${thisArch}-${cpuArch}.img
   fi
   cp -v ./work/$thisArch/"$imageName" ./release/$thisArch/"$BBN_IMG"
 
