@@ -1,5 +1,5 @@
 #!/bin/bash -e
-. ../lib.sh
+. ./lib.sh
 
 install -d /etc/rancher/k3s
 substAndInstall "$FILE_FOLDER"/k3s.yaml "/etc/rancher/k3s/config.yaml"
