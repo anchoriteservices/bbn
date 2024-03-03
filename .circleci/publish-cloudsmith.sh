@@ -7,6 +7,7 @@ set -x
 EXT=$1
 REPO=$2
 DISTRO=$3
+VERSION=$4
 
 pwd
 ls
@@ -24,7 +25,7 @@ for pkg_file in cross-build-release/release/*/*."$EXT"; do
     xz -z -c -v -9e --threads=5 --memory=80% "${zipName}" > ../../../tmp/"${zipName}".xz
   fi
   cd ../../..
-  cloudsmith push raw "$REPO" ./tmp/"${zipName}".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build"
+  cloudsmith push raw "$REPO" ./tmp/"${zipName}".xz --summary "BBN OS built by CircleCi on $(date)" --description "BBN OS build" --version "$VERSION"
   RESULT=$?
   if [ $RESULT -eq 144 ]; then
     echo "skipping already deployed $pkg_file"
