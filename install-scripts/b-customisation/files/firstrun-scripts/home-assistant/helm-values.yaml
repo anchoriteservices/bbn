@@ -1,0 +1,199 @@
+# Configure options applied to all pods
+defaultPodOptions:
+  automountServiceAccountToken: false
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+
+controllers:
+  # Configure the main controller
+  main:
+    type: statefulset
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      # Configure the main application container
+      main:
+        image:
+          # -- image repository
+          repository: homeassistant/home-assistant
+          # -- image tag
+          tag: 2023.12.3
+
+      # Configure the sidecars (whisper, piper, openWakeWord)
+      whisper:
+        dependsOn: main
+        image: 
+          # -- image repository
+          repository: rhasspy/wyoming-whisper
+          # -- image tag
+          tag: 1.0.0
+        args:
+          - --model
+          - small-int8
+          - --language
+          - en
+        env:
+          TZ: Europe/London
+
+      piper:
+        dependsOn: main
+        image: 
+          # -- image repository
+          repository: rhasspy/wyoming-piper
+          # -- image tag
+          tag: 1.4.0
+        args:
+          - --voice
+          - en_GB-alba-medium
+        env:
+          TZ: Europe/London
+
+      openwakeword:
+        dependsOn: main
+        image: 
+          # -- image repository
+          repository: rhasspy/wyoming-openwakeword
+          # -- image tag
+          tag: 1.8.1
+        args:
+          - --preload-model
+          - ok_nabu
+          - --custom-model-dir
+          - /custom
+        env:
+          TZ: Europe/London
+    
+      esphome:
+        dependsOn: main
+        image: 
+          # -- image repository
+          repository: esphome/esphome
+          # -- image tag
+          tag: 2023.11.6
+        env:
+          TZ: Europe/London
+          ESPHOME_DASHBOARD_USE_PING: true
+
+service:
+  # Configure a service for the main application
+  main:
+    type: ClusterIP
+    ports:
+      http:
+        port: 8123
+        
+  # Configure services for the sidecars
+  whisper:
+    type: ClusterIP
+    controller: main
+    ports:
+      http:
+        port: 10300
+        
+  piper:
+    type: ClusterIP
+    controller: main
+    ports:
+      http:
+        port: 10200
+        
+  openwakeword:
+    type: ClusterIP
+    controller: main
+    ports:
+      http:
+        port: 10400
+
+  esphome:
+    type: ClusterIP
+    controller: main
+    ports:
+      http:
+        port: 6053
+        protocol: HTTP
+      tcp: 
+        port: 6123
+        protocol: TCP
+
+ingress:
+  # Configure an Ingress for the main application
+  main:
+    enabled: true
+    className: "traefik"
+    annotations:        
+      kubernetes.io/ingress.class: traefik
+      cert-manager.io/cluster-issuer: letsencrypt
+      traefik.ingress.kubernetes.io/router.middlewares: infrastructure-redirect-https@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+      #traefik.ingress.kubernetes.io/router.tls: 'true'
+    hosts:
+      - host: &host "home.${DOMAIN}"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
+    tls:
+      - hosts:
+        - *host
+        secretName: home-assistant-tls
+  
+persistence:
+  # Configure the main configuration storage location
+  config:
+    enabled: true
+    existingClaim: home-assistant-config
+    advancedMounts:
+      main: 
+        main:
+          - path: /config
+  
+  whisper:
+    enabled: true
+    existingClaim: whisper-data
+    advancedMounts:
+      main:
+        whisper:
+          - path: /data
+
+  piper:
+    enabled: true
+    existingClaim: piper-data
+    advancedMounts:
+      main:
+        piper:
+          - path: /data
+
+  openwakeword:
+    enabled: true
+    existingClaim: openwakeword-data
+    advancedMounts:
+      main:
+        openwakeword:
+          - path: /data
+            subPath: data
+          - path: /custom
+            subPath: custom
+
+  esphome-config:
+    enabled: true
+    existingClaim: esphome-config
+    advancedMounts:
+      main: 
+        esphome:
+          - path: /config
+  
+
+  # # Configure an NFS mount to store backups on
+  # backup:
+  #   enabled: true
+  #   type: nfs
+  #   server: nas.example.lan
+  #   path: /volume/Backups/k8s/hass
+  #   globalMounts:
+  #     - path: /config/backups

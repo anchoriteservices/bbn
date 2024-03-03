@@ -1,0 +1,5 @@
+write-kubeconfig-mode: "0644"
+tls-san:
+  - "k3s.${DEFAULT_HOST}"
+  - "k3s.${DEFAULT_HOST}.local"
+cluster-init: true

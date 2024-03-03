@@ -1,0 +1,139 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: home-assistant-config
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/k3s/home-assistant/config"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: whisper-data
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/k3s/home-assistant/whisper/data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: piper-data
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/k3s/home-assistant/piper/data"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: openwakeword-data
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/k3s/home-assistant/openwakeword"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: esphome-config
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/k3s/home-assistant/esphome/config"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: home-assistant-config
+spec:
+  volumeName: home-assistant-config
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: whisper-data
+spec:
+  volumeName: whisper-data
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: piper-data
+spec:
+  volumeName: piper-data
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: openwakeword-data
+spec:
+  volumeName: openwakeword-data
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: esphome-config
+spec:
+  volumeName: esphome-config
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
