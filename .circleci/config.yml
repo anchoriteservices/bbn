@@ -28,7 +28,8 @@ commands:
       - cloudsmith/install-cli
       - run:
           command: |
-            .circleci/publish-cloudsmith.sh img anchoriteservices/bbn ${PKG_DISTRO}/${PKG_RELEASE}
+            BBN_VER=${LYSMARINE_VER:-$(date +%Y-%m-%d-r%H%M)}
+            .circleci/publish-cloudsmith.sh img anchoriteservices/bbn ${PKG_DISTRO}/${PKG_RELEASE} ${BBN_VER}
           no_output_timeout: 40m
   do-all:
     steps:
