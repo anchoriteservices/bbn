@@ -164,9 +164,3 @@ install -v -m0644 "$FILE_FOLDER"/firstrun.sh "/boot/"
 rm -f /usr/share/applications/xgpsspeed.desktop
 rm -f /usr/share/applications/xgps.desktop
 rm -f /usr/share/applications/yad-icon-browser.desktop
-
-sed -i 's/#RebootWatchdogSec=10min/RebootWatchdogSec=75s/' /etc/systemd/system.conf
-
-# Fill free space with zeros
-cat /dev/zero > /zer0s || true
-rm -f /zer0s
