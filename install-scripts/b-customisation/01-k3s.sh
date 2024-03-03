@@ -13,7 +13,7 @@ export HELM_INSTALL_DIR=/usr/local/bin
 # download the binary and get into place:
 wget https://get.helm.sh/helm-$HELM_VERSION-linux-arm64.tar.gz
 tar xvzf helm-$HELM_VERSION-linux-arm64.tar.gz
-sudo mv linux-arm64/helm $HELM_INSTALL_DIR/helm
+mv linux-arm64/helm $HELM_INSTALL_DIR/helm
 
 # clean up:
 rm -rf linux-arm64 && rm helm-$HELM_VERSION-linux-arm64.tar.gz
