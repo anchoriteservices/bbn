@@ -11,15 +11,15 @@ install -v -m0644 "$FILE_FOLDER"firstrun.sh "/boot/"
 
 install -d /mnt/boat/opencpn
 mv -r /home/user/.opencpn /mnt/boat/opencpn
-ln -s /home/user/.opencpn /mnt/boat/opencpn
+ln -s /mnt/boat/opencpn /home/user/.opencpn
 
 install -d /mnt/boat/polars
 mv -r /home/user/Polars /mnt/boat/polars
-ln -s /home/user/Polars /mnt/boat/polars
+ln -s /mnt/boat/polars /home/user/Polars
 
 install -d /mnt/boat/charts
 mv -r /home/user/charts /mnt/boat/charts
-ln -s /home/user/charts /mnt/boat/charts
+ln -s /mnt/boat/charts /home/user/charts
 
 
 if [ -f /etc/default/grub ] ; then
