@@ -138,6 +138,22 @@ ingress:
             service:
               name: main
               port: http
+
+      - host: &host "home.local"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
+              
+      - host: &host "home"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: http
     tls:
       - hosts:
         - *host

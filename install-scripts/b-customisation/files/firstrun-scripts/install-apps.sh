@@ -15,5 +15,11 @@ cat infrastructure/letsencrypt.yaml | envsubst | kubectl apply -f -
 
 sudo mkdir -p /mnt/k3s/home-assistant/config
 kubectl apply -f home-assistant/storage.yaml
-
 helm install home-assistant anchoriteservices/app-template --values home-assistant/helm-values.yaml
+
+
+sudo mkdir -p /mnt/k3s/mqtt/data
+sudo mkdir -p /mnt/k3s/mqtt/config
+kubectl apply -f mqtt/storage.yaml
+helm install mqtt anchoriteservices/app-template --values mqtt/helm-values.yaml
+

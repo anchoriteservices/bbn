@@ -8,3 +8,25 @@ chmod -R 0644 /boot/firstrun-scripts
 
 # Replace firstrun.sh
 install -v -m0644 "$FILE_FOLDER"firstrun.sh "/boot/"
+
+install -d /mnt/boat/opencpn
+mv -r /home/user/.opencpn /mnt/boat/opencpn
+ln -s /home/user/.opencpn /mnt/boat/opencpn
+
+install -d /mnt/boat/polars
+mv -r /home/user/Polars /mnt/boat/polars
+ln -s /home/user/Polars /mnt/boat/polars
+
+install -d /mnt/boat/charts
+mv -r /home/user/charts /mnt/boat/charts
+ln -s /home/user/charts /mnt/boat/charts
+
+
+if [ -f /etc/default/grub ] ; then
+  install -m0644 -v "$FILE_FOLDER"background.png "/boot/grub/background.png"
+  update-initramfs -u
+  update-grub
+fi
+
+install -v "$FILE_FOLDER"ascii_logo.txt "/etc/motd"
+cp "$FILE_FOLDER"background.png "/usr/share/plymouth/themes/dreams/background.png"

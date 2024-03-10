@@ -1,0 +1,107 @@
+# Configure options applied to all pods
+defaultPodOptions:
+  automountServiceAccountToken: false
+  securityContext:
+    enabled: false
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+    fsGroupChangePolicy: "OnRootMismatch"
+
+controllers:
+  # Configure the main controller
+  main:
+    type: statefulset
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      # Configure the main application container
+      main:
+        image:
+          # -- image repository
+          repository: eclipse-mosquitto
+          # -- image tag
+          tag: 2.0
+
+        ports:
+          mqtt:
+            port: 1884
+            protocol: TCP
+          mqtts:
+            port: 1883
+            protocol: TCP
+          websocket:
+            port: 9090
+            protocol: TCP
+            
+
+service:
+  # Configure a service for the main application
+  main:
+    type: ClusterIP
+    ports:
+      mqtt:
+        port: 1884
+        protocol: TCP
+      mqtts:
+        port: 1883
+        protocol: TCP
+      websocket:
+        port: 9090
+        protocol: TCP
+        
+ingress:
+  # Configure an Ingress for the main application
+  main:
+    enabled: true
+    className: "traefik"
+    annotations:        
+      kubernetes.io/ingress.class: traefik
+      #cert-manager.io/cluster-issuer: letsencrypt
+      #traefik.ingress.kubernetes.io/router.middlewares: infrastructure-redirect-https@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+      #traefik.ingress.kubernetes.io/router.tls: 'true'
+    hosts:
+      - host: &host "mqtt.local"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: mqtt
+      - host: &host "mqtt"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: main
+              port: mqtt
+  
+config: |-
+  persistence true
+  persistence_location /mosquitto/data/
+  log_dest stdout
+  listener 1884
+  listener 1883
+  listener 9090
+  protocol mqtt
+
+persistence:
+  # Configure the main configuration storage location
+  data:
+    enabled: true
+    existingClaim: mqtt-data
+    advancedMounts:
+      main: 
+        main:
+          - path: /mosquitto/data
+  # Configure the main configuration storage location
+  config:
+    enabled: true
+    existingClaim: mqtt-config
+    advancedMounts:
+      main: 
+        main:
+          - path: /mosquitto/config
+  
