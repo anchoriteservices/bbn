@@ -1,0 +1,94 @@
+# Configure options applied to all pods
+defaultPodOptions:
+  automountServiceAccountToken: false
+  securityContext:
+    enabled: false
+    runAsUser: 999
+    runAsGroup: 999
+    fsGroup: 999
+    fsGroupChangePolicy: "OnRootMismatch"
+
+controllers:
+  # Configure the main controller
+  main:
+    type: statefulset
+    annotations:
+      reloader.stakater.com/auto: "true"
+
+    containers:
+      # Configure the main application container
+      main:
+        image:
+          # -- image repository
+          repository: pihole/pihole
+          # -- image tag
+          tag: 2024.02.2
+
+        ports:
+          dns-tcp:
+            port: 53
+            protocol: TCP
+          dns-udp:
+            port: 53
+            protocol: UDP
+          http:
+            port: 80
+            protocol: TCP
+            
+
+service:
+  # Configure a service for the main application
+  main:
+    type: ClusterIP
+    ports:
+      dns-tcp:
+        port: 53
+        protocol: TCP
+      dns-udp:
+        port: 53
+        protocol: UDP
+  
+  web:
+    type: ClusterIP
+    ports:
+      http:
+        port: 80
+        protocol: TCP
+        
+ingress:
+  # Configure an Ingress for the main application
+  web:
+    enabled: true
+    className: "traefik"
+    annotations:        
+      kubernetes.io/ingress.class: traefik
+      #cert-manager.io/cluster-issuer: letsencrypt
+      #traefik.ingress.kubernetes.io/router.middlewares: infrastructure-redirect-https@kubernetescrd
+      #traefik.ingress.kubernetes.io/router.entrypoints: 'websecure'
+      #traefik.ingress.kubernetes.io/router.tls: 'true'
+    hosts:
+      - host: &host "pihole.local"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: web
+              port: http
+      - host: &host "pihole"
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              name: web
+              port: http
+  
+persistence:
+  # Configure the main configuration storage location
+  config:
+    enabled: true
+    existingClaim: pihole-config
+    advancedMounts:
+      main: 
+        main:
+          - path: /etc/pihole
+  

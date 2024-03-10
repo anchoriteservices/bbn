@@ -10,15 +10,15 @@ chmod -R 0644 /boot/firstrun-scripts
 install -v -m0644 "$FILE_FOLDER"firstrun.sh "/boot/"
 
 install -d /mnt/boat/opencpn
-mv -r /home/user/.opencpn /mnt/boat/opencpn
+mv /home/user/.opencpn /mnt/boat/opencpn
 ln -s /mnt/boat/opencpn /home/user/.opencpn
 
 install -d /mnt/boat/polars
-mv -r /home/user/Polars /mnt/boat/polars
+mv /home/user/Polars /mnt/boat/polars
 ln -s /mnt/boat/polars /home/user/Polars
 
 install -d /mnt/boat/charts
-mv -r /home/user/charts /mnt/boat/charts
+mv /home/user/charts /mnt/boat/charts
 ln -s /mnt/boat/charts /home/user/charts
 
 

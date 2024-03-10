@@ -23,3 +23,8 @@ sudo mkdir -p /mnt/k3s/mqtt/config
 kubectl apply -f mqtt/storage.yaml
 helm install mqtt anchoriteservices/app-template --values mqtt/helm-values.yaml
 
+
+sudo mkdir -p /mnt/k3s/pihole/config
+kubectl apply -f pihole/storage.yaml
+helm install pihole anchoriteservices/app-template --values pihole/helm-values.yaml
+
