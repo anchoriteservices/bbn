@@ -18,10 +18,4 @@ mv linux-arm64/helm $HELM_INSTALL_DIR/helm
 # clean up:
 rm -rf linux-arm64 && rm helm-$HELM_VERSION-linux-arm64.tar.gz
 
-# add the official stable charts repo:
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-
-# add another repo:
-helm repo add bitnami https://charts.bitnami.com/bitnami
-
 helm repo add anchoriteservices https://anchoriteservices.github.io/helm-charts
