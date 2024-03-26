@@ -31,7 +31,7 @@ su homeassistant --shell=/bin/bash -c "
   python3.11 -m venv . ;
   source bin/activate;
   python3.11 -m pip install wheel;
-  pip3.11 install homeassistant sqlalchemy fnvhash setuptools;
+  pip3.11 install homeassistant sqlalchemy fnvhash setuptools pyotp PyQRCode;
   mkdir -p /home/homeassistant/.homeassistant;
   rm -rf /home/homeassistant/.cache"
 
@@ -51,6 +51,13 @@ WantedBy=multi-user.target
 EOF'
 
 systemctl disable home-assistant@homeassistant
+
+######################## HomeAssistant Integrations
+
+git clone --depth 1 https://github.com/SmartBoatInnovations/ha-smart0183tcp
+cp -r ha-smart0183tcp/custom_components/smart0183tcp/ /home/homeassistant/.homeassistant/
+chown -R homeassistant:homeassistant /home/homeassistant/.homeassistant/smart0183tcp/
+rm -rf ha-smart0183tcp
 
 ######################## ESPHome
 

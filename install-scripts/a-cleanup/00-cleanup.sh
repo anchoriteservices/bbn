@@ -54,7 +54,7 @@ overrideMenu Radio /usr/share/applications/dk.gqrx.gqrx.desktop
 overrideMenu Radio /usr/local/share/applications/previsat.desktop
 overrideMenu Radio /usr/share/applications/pc-navtex.desktop
 overrideMenu Navigation /usr/share/applications/xygrib.desktop
-
+overrideMenu Utility /root/Desktop/arduino-arduinoide.desktop
 
 rm -rf  /tmp/empty-cache46
 rm -rvf /home/user/Public /home/user/Templates 

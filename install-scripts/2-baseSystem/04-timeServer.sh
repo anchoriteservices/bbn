@@ -2,7 +2,7 @@
 
 mkdir -p /var/log/chrony
 
-apt-get install -y -q chrony
+apt-get install -y -q chrony at
 systemctl disable systemd-timesyncd || true
 
 ## TimeZone
