@@ -11,11 +11,11 @@ wget -q -O - https://github.com/martinber/noaa-apt/raw/master/res/shapefiles/cou
 wget -q -O - https://github.com/martinber/noaa-apt/raw/master/res/shapefiles/lakes.shp > "/usr/local/share/noaa-apt/res/shapefiles/lakes.shp"
 wget -q -O - https://github.com/martinber/noaa-apt/raw/master/res/shapefiles/states.shp > "/usr/local/share/noaa-apt/res/shapefiles/states.shp"
 
-if [ "$LMARCH" == 'arm64' ]; then
-  wget https://github.com/bareboat-necessities/noaa-apt/releases/download/v1.4.1-bookworm/noaa-apt_1.4.1-2_arm64.deb -O noaa-apt.deb
-fi
-dpkg -i noaa-apt.deb && rm -f noaa-apt.deb
-rm -f /usr/local/share/noaa-apt/test/test*.wav
+# if [ "$LMARCH" == 'arm64' ]; then
+#   wget https://github.com/bareboat-necessities/noaa-apt/releases/download/v1.4.1-bookworm/noaa-apt_1.4.1-2_arm64.deb -O noaa-apt.deb
+# fi
+# dpkg -i noaa-apt.deb && rm -f noaa-apt.deb
+# rm -f /usr/local/share/noaa-apt/test/test*.wav
 
 
 #################################
