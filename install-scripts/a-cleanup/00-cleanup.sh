@@ -118,10 +118,10 @@ else
   apt-get -q -y install --download-only avnav-update-plugin
 fi
 
-for f in /etc/apt/sources.list.d/bbn-*.list
-do
-  mv "$f" "$f"-orig
-done
+# for f in /etc/apt/sources.list.d/bbn-*.list
+# do
+#   mv "$f" "$f"-orig
+# done
 
 # These are launchpad. They are ok to have.
 mv /etc/apt/sources.list.d/bbn-rce.list-orig /etc/apt/sources.list.d/bbn-rce.list || true
