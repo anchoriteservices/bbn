@@ -72,7 +72,7 @@ cd "$BK_DIR"
 # dpkg -i opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
 # rm opencpn_5.8*_arm64.deb
 # rm /etc/apt/sources.list.d/opencpn.list
-apt install opencpn
+apt-get install -y -q opencpn
 
 
 # ImgKap https://github.com/nohal
