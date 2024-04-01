@@ -23,23 +23,12 @@ controllers:
           repository: eclipse-mosquitto
           # -- image tag
           tag: 2.0
-
-        ports:
-          mqtt:
-            port: 1884
-            protocol: TCP
-          mqtts:
-            port: 1883
-            protocol: TCP
-          websocket:
-            port: 9090
-            protocol: TCP
             
 
 service:
   # Configure a service for the main application
   main:
-    type: ClusterIP
+    type: LoadBalancer
     ports:
       mqtt:
         port: 1884

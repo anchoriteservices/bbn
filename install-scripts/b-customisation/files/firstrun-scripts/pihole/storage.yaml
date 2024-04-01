@@ -12,3 +12,16 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/mnt/k3s/pihole/config"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pihole-config
+spec:
+  volumeName: pihole-config
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

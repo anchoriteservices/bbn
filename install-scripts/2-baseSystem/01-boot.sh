@@ -18,12 +18,13 @@ fi
 # systemd.run=/boot/firstrun.sh systemd.run_success_action=reboot systemd.unit=kernel-command-line.target
 # console=serial0,115200 console=tty1 root=PARTUUID=7788c428-02 rootfstype=ext4 fsck.repair=yes rootwait quiet init=/usr/lib/raspberrypi-sys-mods/firstboot cfg80211.ieee80211_regdom=US systemd.run=/boot/firstrun.sh systemd.run_success_action=reboot systemd.unit=kernel-command-line.target
 if [ -f /boot/cmdline.txt ]; then
-  sed -i '$s/$/\ console=tty1\ loglevel=1\ splash\ logo.nologo\ cfg80211.ieee80211_regdom=US\ vt.global_cursor_default=1\ plymouth.ignore-serial-consoles\ console=tty3/' "$(realpath /boot/cmdline.txt)"
+  sed -i '$s/$/\ console=tty1\ loglevel=1\ splash\ logo.nologo\ cfg80211.ieee80211_regdom=US\ vt.global_cursor_default=1\ plymouth.ignore-serial-consoles\ console=tty3\ cgroup_memory=1\ cgroup_enable=memory/' "$(realpath /boot/cmdline.txt)"
   #sed -i '$s/$/\ systemd.run=\/boot\/firstrun.sh\ systemd.run_success_action=reboot\ systemd.unit=kernel-command-line.target/' "$(realpath /boot/cmdline.txt)"
   sed -i 's#console=serial0,115200 ##' "$(realpath /boot/cmdline.txt)"
   sed -i 's#console=/dev/serial0,115200 ##' "$(realpath /boot/cmdline.txt)"
   sed -i 's#console=serial0,9600 ##' "$(realpath /boot/cmdline.txt)"
   sed -i 's#console=/dev/serial0,9600 ##' "$(realpath /boot/cmdline.txt)"
+
 
 	setterm -cursor on >> /etc/issue
 	echo 'i2c_dev' | tee -a /etc/modules

@@ -11,12 +11,12 @@ export TIMEZONE=Europe/London
 export USER_PWD='$5$kz4zawSHO0$YGfJYc6XJ0l/McEKhUUGqfvlwUgpMvsrwbSCErM/zN2'
 export DOMAIN='local'
 
-if [ -f /boot/settings.env ]; then
-   source /boot/settings.env
-   rm -f /boot/settings.env
+if [ -f /boot/firmware/settings.env ]; then
+   source /boot/firmware/settings.env
+   rm -f /boot/firmware/settings.env
 
-   if [ ! "$WIFI_PASSPHRASE" -eq "" ]; then
-      WIFI_PSK=`wpa_passphrase "$WIFI_NAME" "$WIFI_PASSPHRASE"
+   if [[ "$WIFI_PASSPHRASE" != "" ]]; then
+      WIFI_PSK=`wpa_passphrase "$WIFI_NAME" "$WIFI_PASSPHRASE"`
    fi
 fi
 
@@ -90,18 +90,18 @@ KBEOF
    dpkg-reconfigure -f noninteractive keyboard-configuration
 fi
 
-if [ -d /boot/firstrun-scripts ]; then
-   cd /boot/firstrun-scripts
-   for runScript in /boot/firstrun-scripts/*.sh; do
+if [ -d /boot/firmware/firstrun-scripts ]; then
+   cd /boot/firmware/firstrun-scripts
+   for runScript in /boot/firmware/firstrun-scripts/*.sh; do
     if [ -f "$runScript" ]; then
       chmod +x "$runScript"
       $runScript
     fi
    done
    cd -
-   rm -rf /boot/firstrun-scripts
+   rm -rf /boot/firmware/firstrun-scripts
 fi
 
-rm -f /boot/firstrun.sh
-sed -i 's| systemd.run.*||g' /boot/cmdline.txt
+rm -f /boot/firmware/firstrun.sh
+sed -i 's| systemd.run.*||g' /boot/firmware/cmdline.txt
 exit 0
