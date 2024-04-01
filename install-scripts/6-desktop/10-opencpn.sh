@@ -24,48 +24,48 @@ rm All_polar_files.zip
 
 cd "$BK_DIR"
 
-mkdir tmp-o-bundle-"$LMARCH" || exit 2
-cd tmp-o-bundle-"$LMARCH"
+# mkdir tmp-o-bundle-"$LMARCH" || exit 2
+# cd tmp-o-bundle-"$LMARCH"
 
-if [ "$BBN_KIND" == "LITE" ] ; then
- # wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-lite-"$LMARCH".tar.gz
-else
-  wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-full-"$LMARCH".tar.gz
-fi
-gzip -cd opencpn-plugins-bundle-"$LMARCH".tar.gz | tar xvf -
+# if [ "$BBN_KIND" == "LITE" ] ; then
+#   wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-lite-"$LMARCH".tar.gz
+# else
+#   wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-full-"$LMARCH".tar.gz
+# fi
+# gzip -cd opencpn-plugins-bundle-"$LMARCH".tar.gz | tar xvf -
 
-mkdir -p /home/user/.local/lib /home/user/.local/bin /home/user/.local/share /home/user/.local/doc /home/user/.local/include
-cp -r -p lib/* /home/user/.local/lib/
-cp -r -p bin/* /home/user/.local/bin/ || true
-cp -r -p share/* /home/user/.local/share/
-cp -r -p doc/* /home/user/.local/doc/ || true
-cp -r -p include/* /home/user/.local/include/ || true
+# mkdir -p /home/user/.local/lib /home/user/.local/bin /home/user/.local/share /home/user/.local/doc /home/user/.local/include
+# cp -r -p lib/* /home/user/.local/lib/
+# cp -r -p bin/* /home/user/.local/bin/ || true
+# cp -r -p share/* /home/user/.local/share/
+# cp -r -p doc/* /home/user/.local/doc/ || true
+# cp -r -p include/* /home/user/.local/include/ || true
 
-chown -R user:user /home/user/.local
+# chown -R user:user /home/user/.local
 
-cd ..
-rm -rf tmp-o-bundle-"$LMARCH"
+# cd ..
+# rm -rf tmp-o-bundle-"$LMARCH"
 
-if [ -f /home/user/.local/lib/opencpn/libPolar_pi.so ]; then
-  mv /home/user/.local/lib/opencpn/libPolar_pi.so /usr/lib/opencpn/libpolar_pi.so
-fi
+# if [ -f /home/user/.local/lib/opencpn/libPolar_pi.so ]; then
+#   mv /home/user/.local/lib/opencpn/libPolar_pi.so /usr/lib/opencpn/libpolar_pi.so
+# fi
 
-if [ -f /home/user/.local/lib/opencpn/liblogbookkonni_pi.so ]; then
-  rm -f /home/user/.local/lib/opencpn/libLogbookKonni_pi.so
-fi
+# if [ -f /home/user/.local/lib/opencpn/liblogbookkonni_pi.so ]; then
+#   rm -f /home/user/.local/lib/opencpn/libLogbookKonni_pi.so
+# fi
 
-mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics.svg
-mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics_rollover.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics_rollover.svg
-mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics_toggled.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics_toggled.svg
-#mv /home/user/.local/share/opencpn/plugins/CanadianTides_pi/data/canadiantides_panel_icon.png /home/user/.local/share/opencpn/plugins/CanadianTides_pi/data/CanadianTides_panel_icon.png
+# mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics.svg
+# mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics_rollover.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics_rollover.svg
+# mv /home/user/.local/share/opencpn/plugins/tactics_pi/data/Tactics_toggled.svg /home/user/.local/share/opencpn/plugins/tactics_pi/data/tactics_toggled.svg
+# #mv /home/user/.local/share/opencpn/plugins/CanadianTides_pi/data/canadiantides_panel_icon.png /home/user/.local/share/opencpn/plugins/CanadianTides_pi/data/CanadianTides_panel_icon.png
 
-wget --no-check-certificate https://download.tuxfamily.org/xinutop/rastow/rastow-0.4.tgz
-gzip -cd rastow-0.4.tgz | tar xvf -
-mv rastow.sh /usr/local/bin
-rm rastow-0.4.tgz
-wget --no-check-certificate https://download.tuxfamily.org/xinutop/rastow/readme.txt
-mkdir /usr/local/share/rastow
-mv readme.txt /usr/local/share/rastow/
+# wget --no-check-certificate https://download.tuxfamily.org/xinutop/rastow/rastow-0.4.tgz
+# gzip -cd rastow-0.4.tgz | tar xvf -
+# mv rastow.sh /usr/local/bin
+# rm rastow-0.4.tgz
+# wget --no-check-certificate https://download.tuxfamily.org/xinutop/rastow/readme.txt
+# mkdir /usr/local/share/rastow
+# mv readme.txt /usr/local/share/rastow/
 
 # # TODO: temp fix
 # wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
