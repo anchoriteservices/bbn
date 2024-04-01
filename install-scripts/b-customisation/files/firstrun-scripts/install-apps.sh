@@ -5,8 +5,12 @@ CERTMAN_VERSION=${CERTMAN_VERSION:=1.13.3}
 helm repo update
 
 # CLOUDFLARE
-cp -rf /boot/firmware/firstrun-scripts/files/.cloudflared /home/user/.cloudflared
-CLOUDFLARE_CONFIG=`find /home/user/.cloudflared -type f -name "*.json"`
+cp -rf /boot/firmware/firstrun-scripts/files/.cloudflared /mnt/boat/cloudflared
+ln -s /mnt/boat/cloudflared /home/user/.cloudflared
+chown -R user:user /mnt/boat/cloudflared
+chmod -R 755 /mnt/boat/cloudflared
+
+CLOUDFLARE_CONFIG=`find /mnt/boat/cloudflared -type f -name "*.json"`
 kubectl create secret generic tunnel-credentials --from-file=credentials.json=\$CLOUDFLARE_CONFIG
 helm install -f infrastructure/cloudflare-values.yaml cloudflare/cloudflare-tunnel
 
