@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+if [ "$BBN_KIND" == "LITE" ] ; then
+  exit 0
+fi
+
 # https://github.com/ArduPilot/apm_planner
 
 if [ "$LMARCH" == 'arm64' ]; then

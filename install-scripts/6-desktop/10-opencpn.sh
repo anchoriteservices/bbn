@@ -28,7 +28,7 @@ mkdir tmp-o-bundle-"$LMARCH" || exit 2
 cd tmp-o-bundle-"$LMARCH"
 
 if [ "$BBN_KIND" == "LITE" ] ; then
-  wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-lite-"$LMARCH".tar.gz
+ # wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-lite-"$LMARCH".tar.gz
 else
   wget -O opencpn-plugins-bundle-"$LMARCH".tar.gz https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn-plugins-bundle-o_5_8_x-bookworm-full-"$LMARCH".tar.gz
 fi
@@ -67,11 +67,13 @@ wget --no-check-certificate https://download.tuxfamily.org/xinutop/rastow/readme
 mkdir /usr/local/share/rastow
 mv readme.txt /usr/local/share/rastow/
 
-# TODO: temp fix
-wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
-dpkg -i opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
-rm opencpn_5.8*_arm64.deb
-rm /etc/apt/sources.list.d/opencpn.list
+# # TODO: temp fix
+# wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
+# dpkg -i opencpn_5.8.4+8089+1637c28fb.ubuntu22.04.1_arm64.deb
+# rm opencpn_5.8*_arm64.deb
+# rm /etc/apt/sources.list.d/opencpn.list
+apt install opencpn
+
 
 # ImgKap https://github.com/nohal
 apt-get -y install libfreeimage-dev

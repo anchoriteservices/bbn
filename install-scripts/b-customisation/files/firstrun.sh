@@ -22,10 +22,10 @@ fi
 
 CURRENT_HOSTNAME=`cat /etc/hostname | tr -d " \t\n\r"`
 if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
-   /usr/lib/raspberrypi-sys-mods/imager_custom set_hostname $NEW_HOSTNAME
+   /usr/lib/raspberrypi-sys-mods/imager_custom set_hostname $HOSTNAME
 else
-   echo $NEW_HOSTNAME >/etc/hostname
-   sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\t$NEW_HOSTNAME/g" /etc/hosts
+   echo $HOSTNAME >/etc/hostname
+   sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\t$HOSTNAME/g" /etc/hosts
 fi
 FIRSTUSER=`getent passwd 1000 | cut -d: -f1`
 FIRSTUSERHOME=`getent passwd 1000 | cut -d: -f6`
@@ -52,27 +52,30 @@ fi
 if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
    /usr/lib/raspberrypi-sys-mods/imager_custom set_wlan "$WIFI_NAME" "$WIFI_PSK" "$WIFI_COUNTRY"
 else
-cat << \WPAEOF >/etc/wpa_supplicant/wpa_supplicant.conf 
-country=$WIFI_COUNTRY
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-ap_scan=1
 
-update_config=1
-network={
-	ssid="$WIFI_NAME"
-	psk=$WIFI_PSK
-}
+cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured.nmconnection
+[connection]
+id=preconfigured
+uuid=85c59f45-1f62-434e-9d5a-cf715a0c9b0d
+type=wifi
+[wifi]
+mode=infrastructure
+ssid=$WIFI_NAME
+hidden=false
+[ipv4]
+method=auto
+[ipv6]
+addr-gen-mode=default
+method=auto
+[proxy]
+[wifi-security]
+key-mgmt=wpa-psk
+psk=$WIFI_PSK
+NMCONN
 
-WPAEOF
-
-   chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
-   rfkill unblock wifi
-   for filename in /var/lib/systemd/rfkill/*:wlan ; do
-       echo 0 > $filename
-   done
 fi
 
-LOCALE
+
 if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
    /usr/lib/raspberrypi-sys-mods/imager_custom set_keymap "$LOCALE"
    /usr/lib/raspberrypi-sys-mods/imager_custom set_timezone "$TIMEZONE"

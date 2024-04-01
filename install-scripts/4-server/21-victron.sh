@@ -11,15 +11,15 @@
 #popd
 
 # see https://github.com/victronenergy/venus-html5-app
-pushd /usr/share/
-  wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/venus-html5-app-build.tar.gz
-  mkdir venus-app
-  cd venus-app
-  gzip -cd ../venus-html5-app-build.tar.gz | tar xvf -
-  rm ../venus-html5-app-build.tar.gz
-popd
+# pushd /usr/share/
+#   wget https://github.com/bareboat-necessities/lysmarine_gen/releases/download/vTest/venus-html5-app-build.tar.gz
+#   mkdir venus-app
+#   cd venus-app
+#   gzip -cd ../venus-html5-app-build.tar.gz | tar xvf -
+#   rm ../venus-html5-app-build.tar.gz
+# popd
 
-npm install -g serve
+# npm install -g serve
 
 
 # to start:
@@ -39,9 +39,9 @@ npm install -g serve
 # This way you can run the local app against venus device data if the venus device
 # is on the same network as your computer.
 
-install -v -m 0644 "$FILE_FOLDER"/victron.service "/etc/systemd/system/"
+# install -v -m 0644 "$FILE_FOLDER"/victron.service "/etc/systemd/system/"
 
-systemctl enable victron.service
+# systemctl enable victron.service
 
 bash -c 'cat << EOF > /usr/local/share/applications/victron.desktop
 [Desktop Entry]
@@ -49,8 +49,7 @@ Type=Application
 Name=Victron
 GenericName=Victron
 Comment=Victron
-Exec=gnome-www-browser http://localhost:8000/app?host=venus.local&port=9001
-#Exec=gnome-www-browser http://localhost:8000/app?host=<VENUS_DEVICE_IP>&port=9001
+Exec=gnome-www-browser http://venus.local/gui-beta
 # Read: https://github.com/victronenergy/venus-html5-app
 Terminal=false
 Icon=battery-symbolic

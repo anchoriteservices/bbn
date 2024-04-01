@@ -91,7 +91,24 @@ if [ "$BBN_KIND" == "LITE" ] ; then
                  xdr-parser-plugin \
                  signalk-path-filter \
                  signalk-datetime \
-                 @meri-imperiumi/signalk-autostate --unsafe-perm --loglevel error"
+                 @meri-imperiumi/signalk-autostate \
+                 @signalk/signalk-node-red  \
+                 node-red-dashboard \
+                 node-red-contrib-nmea \
+                 node-red-contrib-modbus \
+                 @victronenergy/node-red-contrib-victron \
+                 node-red-contrib-influxdb \
+                 node-red-contrib-moment \
+                 node-red-contrib-string \
+                 node-red-node-email \
+                 node-red-node-serialport \
+                 node-red-node-openweathermap \
+                 node-red-contrib-dht-sensor \
+                 node-red-contrib-ds18b20-sensor \
+                 node-red-contrib-sht31 \
+                 node-red-contrib-bme280 \
+                 node-red-contrib-sensor-htu21d \
+                 node-red-contrib-ina-sensor --unsafe-perm --loglevel error"
   popd
 else
   ## Install signalk published plugins
@@ -220,9 +237,6 @@ systemctl enable signalk
 
 install -d /usr/local/share/applications
 
-if [ "$BBN_KIND" == "LITE" ] ; then
-  true
-else
   bash -c 'cat << EOF > /usr/local/share/applications/signalk-node-red.desktop
 [Desktop Entry]
 Type=Application
@@ -245,7 +259,6 @@ Terminal=false
 Icon=gtk-about
 Categories=Utility;
 EOF'
-fi
 
 rm -rf /home/signalk/.cache
 rm -rf /home/signalk/.npm
