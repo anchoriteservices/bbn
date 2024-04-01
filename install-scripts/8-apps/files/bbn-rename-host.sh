@@ -27,6 +27,9 @@ sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/g" /etc/hosts
 
 sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/g" "/etc/NetworkManager/system-connections/lysmarine-hotspot.nmconnection"
 
-sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/g" "/home/pypilot/.pypilot/signalk.conf"
+
+if [ "$BBN_KIND" != "LITE" ] ; then
+  sed -i "s/$OLD_HOSTNAME/$NEW_HOSTNAME/g" "/home/pypilot/.pypilot/signalk.conf"
+fi
 
 echo "Done. Reboot the system for the changes to take effect."

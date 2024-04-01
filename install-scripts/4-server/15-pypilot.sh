@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+if [ "$BBN_KIND" == "LITE" ] ; then
+  exit 0
+fi
+
 ## Create pypilot user to run the services.
 if [ ! -d /home/pypilot ]; then
 	echo "Creating pypilot user"

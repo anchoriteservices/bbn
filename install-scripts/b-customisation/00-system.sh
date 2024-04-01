@@ -10,6 +10,7 @@ chmod -R 0644 /boot/firstrun-scripts
 install -m 755 "$FILE_FOLDER"/firstrun "/usr/local/sbin/firstrun"
 install -v -m0644 "$FILE_FOLDER"firstrun.sh "/boot/"
 install -m 755 "$FILE_FOLDER"/first-boot.sh "/boot/first-boot.sh"
+install -m 755 "$FILE_FOLDER"/settings.env "/boot/settings.env"
 
 
 install -d /mnt/boat/opencpn

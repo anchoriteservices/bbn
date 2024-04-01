@@ -2,9 +2,9 @@
 
 exit 0 # disabled temp
 
-if [ "$BBN_KIND" == "LITE" ] ; then
-  exit 0
-fi
+  if [ "$BBN_KIND" == "LITE" ] ; then
+    exit 0
+  fi
 
 # https://github.com/dakk/gweatherrouting
 

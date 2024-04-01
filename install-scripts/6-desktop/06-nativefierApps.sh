@@ -29,10 +29,22 @@ nativefier -a "$arch" --disable-context-menu --disable-dev-tools --single-instan
   --name "bbn-launcher" --icon /usr/share/icons/gnome/256x256/apps/utilities-system-monitor.png \
   "http://localhost:4997" /opt/
 
-nativefier -a "$arch" --inject "$FILE_FOLDER"/pypilot_darktheme.js --disable-context-menu --disable-dev-tools --single-instance \
-  --disable-old-build-warning-yesiknowitisinsecure \
-  --name "Pypilot_webapp" --icon /usr/share/icons/gnome/256x256/actions/go-jump.png \
-  "http://localhost:8080" /opt/
+
+if [ "$BBN_KIND" != "LITE" ] ; then
+
+  nativefier -a "$arch" --inject "$FILE_FOLDER"/pypilot_darktheme.js --disable-context-menu --disable-dev-tools --single-instance \
+    --disable-old-build-warning-yesiknowitisinsecure \
+    --name "Pypilot_webapp" --icon /usr/share/icons/gnome/256x256/actions/go-jump.png \
+    "http://localhost:8080" /opt/
+
+  install -v -m 0644 "$FILE_FOLDER"/pypilot_webapp.desktop "/usr/local/share/applications/"
+  mv /opt/Pypilot_webapp-linux-"$arch" /opt/Pypilot_webapp
+
+  if [ "$LMOS" == Debian ]; then  
+    chmod 4755 /opt/Pypilot_webapp/chrome-sandbox
+  fi
+
+fi
 
 nativefier -a "$arch" --disable-context-menu --disable-dev-tools --single-instance \
   --disable-old-build-warning-yesiknowitisinsecure \
@@ -44,19 +56,16 @@ nativefier -a "$arch" --disable-context-menu --disable-dev-tools --single-instan
   --name "kip-dash" --icon /home/user/.local/share/icons/signalk.png \
   "http://localhost:3000/@mxtommy/kip/" /opt/
 
-install -v -m 0644 "$FILE_FOLDER"/pypilot_webapp.desktop "/usr/local/share/applications/"
 install -v -m 0644 "$FILE_FOLDER"/signalk.desktop "/usr/local/share/applications/"
 install -v -m 0644 "$FILE_FOLDER"/kip-dash.desktop "/usr/local/share/applications/"
 
 mv /opt/bbn-launcher-linux-"$arch" /opt/bbn-launcher
-mv /opt/Pypilot_webapp-linux-"$arch" /opt/Pypilot_webapp
 mv /opt/SignalK-linux-"$arch" /opt/SignalK
 mv /opt/kip-dash-linux-"$arch" /opt/kip-dash
 
 ## On debian, the sandbox environment fail without GUID/SUID
 if [ "$LMOS" == Debian ]; then
   chmod 4755 /opt/bbn-launcher/chrome-sandbox
-  chmod 4755 /opt/Pypilot_webapp/chrome-sandbox
   chmod 4755 /opt/SignalK/chrome-sandbox
   chmod 4755 /opt/kip-dash/chrome-sandbox
 fi

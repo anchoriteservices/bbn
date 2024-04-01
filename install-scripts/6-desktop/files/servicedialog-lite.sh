@@ -52,12 +52,13 @@ rows="\
 $(isEnabled NetworkManager) \
 $(isEnabled ssh) \
 $(isEnabled kplex) \
-$(isEnabled pypilot@pypilot.service) \
-$(isEnabled pypilot_web) \
 $(isEnabled signalk) \
 $(isEnabled vncserver-x11-serviced) \
 $(isEnabled pigpiod) \
 "
+
+#$(isEnabled pypilot@pypilot.service) \
+#$(isEnabled pypilot_web) \
 
 ## Dialog
 save=$(
@@ -81,8 +82,8 @@ export SUDO_ASKPASS="/usr/bin/ssh-askpass"
   echo 10; takeAction1 "$save" NetworkManager
   echo 30; takeAction1 "$save" ssh
   echo 40; takeAction1 "$save" kplex
-  echo 45; takeAction1 "$save" pypilot@pypilot.service
-  echo 50; takeAction1 "$save" pypilot_web
+  # echo 45; takeAction1 "$save" pypilot@pypilot.service
+  # echo 50; takeAction1 "$save" pypilot_web
   echo 60; takeAction1 "$save" signalk
   echo 65; takeAction1 "$save" vncserver-x11-serviced
   echo 95; takeAction1 "$save" pigpiod

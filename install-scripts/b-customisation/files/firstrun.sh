@@ -2,7 +2,7 @@
 
 set +e
 
-export HOSTNAME=lysmarine
+export NEW_HOSTNAME=lysmarine
 export WIFI_NAME="lysmarine-hotspot"
 export WIFI_PSK="9edadd0c8b779a33b4f336efa49535aa9a5a1c7809a457abb71fd68a1925d91f"
 export WIFI_COUNTRY="GB"
@@ -22,13 +22,18 @@ fi
 
 CURRENT_HOSTNAME=`cat /etc/hostname | tr -d " \t\n\r"`
 if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
-   /usr/lib/raspberrypi-sys-mods/imager_custom set_hostname $HOSTNAME
+   /usr/lib/raspberrypi-sys-mods/imager_custom set_hostname $NEW_HOSTNAME
 else
-   echo $HOSTNAME >/etc/hostname
-   sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\t$HOSTNAME/g" /etc/hosts
+   echo $NEW_HOSTNAME >/etc/hostname
+   sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\t$NEW_HOSTNAME/g" /etc/hosts
 fi
 FIRSTUSER=`getent passwd 1000 | cut -d: -f1`
 FIRSTUSERHOME=`getent passwd 1000 | cut -d: -f6`
+
+if [[ "$USER_PASSWORD" != "" ]]; then
+   USER_PWD=`mkpasswd -m sha-256 $USER_PASSWORD`
+fi
+
 if [ -f /usr/lib/userconf-pi/userconf ]; then
    /usr/lib/userconf-pi/userconf 'user' "$USER_PWD"
 else
@@ -53,9 +58,44 @@ if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
    /usr/lib/raspberrypi-sys-mods/imager_custom set_wlan "$WIFI_NAME" "$WIFI_PSK" "$WIFI_COUNTRY"
 else
 
-cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured.nmconnection
+if [ "$WIFI_NAME" =~ ".*hotspot" ]; then
+
+   cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-hotspot.nmconnection
 [connection]
-id=preconfigured
+id=$WIFI_NAME
+uuid=cabf5cf8-e457-4480-bfdb-17e8e2c8a327
+type=wifi
+interface-name=wlan0
+permissions=user:user:;
+
+[wifi]
+band=bg
+mac-address-blacklist=
+mode=ap
+ssid=$WIFI_NAME
+
+[wifi-security]
+key-mgmt=wpa-psk
+pairwise=ccmp
+psk=$WIFI_PSK
+
+[ipv4]
+dns-search=
+method=shared
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+ip6-privacy=0
+method=ignore
+
+NMCONN
+
+else
+
+   cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-wifi.nmconnection
+[connection]
+id=$WIFI_NAME
 uuid=85c59f45-1f62-434e-9d5a-cf715a0c9b0d
 type=wifi
 [wifi]
@@ -71,6 +111,7 @@ method=auto
 [wifi-security]
 key-mgmt=wpa-psk
 psk=$WIFI_PSK
+
 NMCONN
 
 fi
