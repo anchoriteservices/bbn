@@ -58,9 +58,9 @@ if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
    /usr/lib/raspberrypi-sys-mods/imager_custom set_wlan "$WIFI_NAME" "$WIFI_PSK" "$WIFI_COUNTRY"
 else
 
-if [ "$WIFI_NAME" =~ ".*hotspot" ]; then
+   if [ "$WIFI_NAME" =~ ".*hotspot" ]; then
 
-   cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-hotspot.nmconnection
+      cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-hotspot.nmconnection
 [connection]
 id=$WIFI_NAME
 uuid=cabf5cf8-e457-4480-bfdb-17e8e2c8a327
@@ -91,13 +91,20 @@ method=ignore
 
 NMCONN
 
-else
+      chmod -R 600 /etc/NetworkManager/system-connections/preconfigured-hotspot.nmconnection
+      chown -R root:root /etc/NetworkManager/system-connections/preconfigured-hotspot.nmconnection
+      systemctl restart NetworkManager 
+      nmcli con up $WIFI_NAME
 
-   cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-wifi.nmconnection
+
+   else
+
+      cat << \NMCONN > /etc/NetworkManager/system-connections/preconfigured-wifi.nmconnection
 [connection]
 id=$WIFI_NAME
 uuid=85c59f45-1f62-434e-9d5a-cf715a0c9b0d
 type=wifi
+autoconnect=true
 [wifi]
 mode=infrastructure
 ssid=$WIFI_NAME
@@ -114,8 +121,13 @@ psk=$WIFI_PSK
 
 NMCONN
 
-fi
+      chmod -R 600 /etc/NetworkManager/system-connections/preconfigured-wifi.nmconnection
+      chown -R root:root /etc/NetworkManager/system-connections/preconfigured-wifi.nmconnection
+      systemctl restart NetworkManager 
+      nmcli con up $WIFI_NAME
 
+   fi
+fi
 
 if [ -f /usr/lib/raspberrypi-sys-mods/imager_custom ]; then
    /usr/lib/raspberrypi-sys-mods/imager_custom set_keymap "$LOCALE"
